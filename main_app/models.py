@@ -3,7 +3,7 @@ from django.db.models.deletion import CASCADE
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-class Topic(models.Model):
+class Post(models.Model):
     id = models.ForeignKey(User, on_delete=models.CASCADE)
     author_id = models.CharField(max_length=50)
     title = models.CharField(max_length=50)

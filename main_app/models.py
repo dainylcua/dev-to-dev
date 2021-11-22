@@ -29,7 +29,7 @@ class Topic(models.Model):
 #         return reverse('detail', kwargs={'pk': self.id})
 
 
-class Comments(models.Model):
+class Comment(models.Model):
     id = models.ForeignKey(User, on_delete=models.CASCADE)
     topic_id = models.CharField(max_length=50)
     author_id = models.CharField(max_length=50)

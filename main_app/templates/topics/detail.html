@@ -1,7 +1,10 @@
+{% comment %}
+
+
 {% extends 'base.html' %} 
 
 {% block content %}
-<!-- {% for post in object_list %} -->
+{% for post in object_list %}
 <div class="card">
     <div class="post">
         <span class="card-title">{{ post.title }}</span>
@@ -9,12 +12,16 @@
         <p>{{ post.score }}</p>
     </div>
 </div>
-<!-- {% endfor %} -->
+{% endfor %}
 {% endblock %}
 
 
+<!-- Please remove the endcomment blocks! -->
 
-<!-- <div>
+{% endcomment %}
+
+
+<div>
   {{ topic.id }}
   {{ topic.title }}
   {{ topic.subtitle }}
@@ -33,4 +40,4 @@
       </a>
     </div>
   {% endfor %}
-</div> -->
+</div>

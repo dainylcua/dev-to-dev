@@ -21,21 +21,19 @@ class Post(models.Model):
     description = models.TextField(max_length=250)
     score = models.IntegerField(default=0, editable=False)
     admin = models.BooleanField(default=False, editable=False)
+    date = models.DateField('date_published', auto_now=True)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
-
-    def get_absolute_url(self):
-        return reverse('post_detail', kwargs={'pk': self.id})
     
     def __str__(self):
       return f"{self.title} is under topic {self.topic}"
 
 class Comment(models.Model):
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # post = models.ForeignKey(Post, on_delete=models.CASCADE)
     content = models.TextField(max_length=250)
-    score = models.IntegerField()
-    create_date = models.DateField('Created Date')
-    
+    score = models.IntegerField(default=0, editable=False)
+    date = models.DateField('date_published', auto_now=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
     def __str__(self):
         return f'{self.get_comment_display()} on {self.date}'
         

@@ -66,8 +66,12 @@ class PostDelete(DeleteView):
 
 def posts_detail(request, topic_id, post_id):
   post = Post.objects.get(id=post_id)
+  topic_id = topic_id
+  comment_form = CommentForm()
   return render(request, 'posts/detail.html', {
-    'post': post
+    'post': post,
+    'comment_form': comment_form,
+    'topic_id': topic_id
   })
 
 # # Potentially remove this? We might only need post_show
@@ -80,15 +84,15 @@ def posts_detail(request, topic_id, post_id):
 #   model = Comment
 #   fields = 'content'
 
-# def add_comment(request, post_id):
-#   form = PostForm(request.POST)
-#   print(form._errors)
-#   if form.is_valid():
-#     new_post = form.save(commit=False)
-#     new_post.post_id = post_id
-#     new_post.save()
+def add_comment(request, topic_id, post_id):
+  form = CommentForm(request.POST)
+  print(form._errors)
+  if form.is_valid():
+    new_comment = form.save(commit=False)
+    new_comment.post_id = post_id
+    new_comment.save()
   
-#   return redirect('detail', post_id=post_id)
+  return redirect('posts_detail', topic_id=topic_id, post_id=post_id)
 
 
 class CommentUpdate(UpdateView):

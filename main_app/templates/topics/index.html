@@ -1,6 +1,8 @@
 {% for topic in object_list %}
   <div>
-    {{ topic.title }}
-    {{ topic.subtitle }}
+    <a href="{% url 'detail' topic.id %}">
+      {{ topic.title }}
+      {{ topic.subtitle }}
+    </a>
   </div>
 {% endfor %}

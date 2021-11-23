@@ -4,6 +4,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.utils import timezone
 
 # TODO: Redirect succesful Post delete to the specific topic the post was from
 # TODO: Redirect succesful Comment delete to the specific post the comment was from

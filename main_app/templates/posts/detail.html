@@ -19,3 +19,20 @@
 </div>
 
 {% endblock %}
+<!-- <div>
+  {{ post.id }}
+  {{ post.title }}
+  {{ post.description }}
+</div>
+<div>
+  <form action="{% url 'comments_create' topic_id post.id %}" method="post">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <input type="submit" value="Add Post">
+  </form>
+  {% for comment in post.comment_set.all %}
+    <div>
+        {{ comment.content }}
+    </div>
+  {% endfor %}
+</div> -->

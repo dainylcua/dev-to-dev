@@ -4,12 +4,9 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.db.models.fields.related import ManyToManyField 
 
-# TODO: Add Topic model
 class Comment(models.Model):
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     # post = models.ForeignKey(User, on_delete=models.CASCADE)
-    # topic_id = models.CharField(max_length=50)
-    # author_id = models.CharField(max_length=50)
     content = models.TextField(max_length=250)
     score = models.IntegerField()
     create_date = models.DateField('Created Date')
@@ -23,6 +20,7 @@ class Comment(models.Model):
 class Post(models.Model):
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     # comments = ManyToManyField(Comment)
+    # topic = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     description = models.TextField(max_length=250)
     score = models.IntegerField()
@@ -30,6 +28,11 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail', kwargs={'pk': self.id})
+
+class Topic(models.Model):
+    title = models.CharField(max_length=50)
+    subtitle = models.CharField(max_length=100)
+    date = models.DateField()
 
 
 # class User(models.Model):

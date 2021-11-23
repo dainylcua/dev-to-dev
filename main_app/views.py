@@ -64,9 +64,9 @@ class PostDelete(DeleteView):
   model = Post
   success_url = '/topics/'
 
-def posts_detail(request, post_id):
+def posts_detail(request, topic_id, post_id):
   post = Post.objects.get(id=post_id)
-  return render(request, 'topics/index.html', {
+  return render(request, 'posts/detail.html', {
     'post': post
   })
 
@@ -76,9 +76,20 @@ def posts_detail(request, post_id):
 #   template_name = 'posts/detail.html'
 
 #  Potentially change to def add_comment? Similar to assoc_feeding in catcollector
-class CommentCreate(CreateView):
-  model = Comment
-  fields = 'content'
+# class CommentCreate(CreateView):
+#   model = Comment
+#   fields = 'content'
+
+# def add_comment(request, post_id):
+#   form = PostForm(request.POST)
+#   print(form._errors)
+#   if form.is_valid():
+#     new_post = form.save(commit=False)
+#     new_post.post_id = post_id
+#     new_post.save()
+  
+#   return redirect('detail', post_id=post_id)
+
 
 class CommentUpdate(UpdateView):
   model = Comment

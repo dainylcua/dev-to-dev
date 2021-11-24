@@ -1,7 +1,10 @@
+{% comment %}
+
+
 {% extends 'base.html' %} 
 
 {% block content %}
-<!-- {% for topic in object_list %} -->
+{% for topic in object_list %}
 <div class="card">
     <div class="topic">
         <a href="{% url 'detail' post.id %}">
@@ -11,5 +14,21 @@
         </a>
     </div>
 </div>
-<!-- {% endfor %} -->
+{% endfor %}
 {% endblock %}
+
+
+<!-- Please remove the endcomment blocks! -->
+
+{% endcomment %}
+
+
+
+{% for topic in object_list %}
+  <div>
+    <a href="{% url 'detail' topic.id %}">
+      {{ topic.title }}
+      {{ topic.subtitle }}
+    </a>
+  </div>
+{% endfor %}

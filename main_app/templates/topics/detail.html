@@ -1,7 +1,10 @@
+{% comment %}
+
+
 {% extends 'base.html' %} 
 
 {% block content %}
-<!-- {% for post in object_list %} -->
+{% for post in object_list %}
 <div class="card">
     <div class="post">
         <span class="card-title">{{ post.title }}</span>
@@ -9,5 +12,32 @@
         <p>{{ post.score }}</p>
     </div>
 </div>
-<!-- {% endfor %} -->
+{% endfor %}
 {% endblock %}
+
+
+<!-- Please remove the endcomment blocks! -->
+
+{% endcomment %}
+
+
+<div>
+  {{ topic.id }}
+  {{ topic.title }}
+  {{ topic.subtitle }}
+  {{ topic.date }}
+</div>
+<div>
+  <form action="{% url 'posts_create' topic.id %}" method="post">
+    {% csrf_token %}
+    {{ post_form.as_p }}
+    <input type="submit" value="Add Post">
+  </form>
+  {% for post in topic.post_set.all %}
+    <div>
+      <a href="{% url 'posts_detail' topic.id post.id %}">
+        {{ post.title }}
+      </a>
+    </div>
+  {% endfor %}
+</div>

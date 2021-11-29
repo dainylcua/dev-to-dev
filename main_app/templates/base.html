@@ -13,12 +13,17 @@
 </head>
 <body>
     <header>
-        <nav>
-            <a href="/">Dev-to-Dev</a>
-            <a href="/topics">Topics</a>
-            <a href="/accounts/login ">Log In</a>
-            <a href="/accounts/signup">Sign Up</a>
-            <a href="{% url 'logout' %}">Log Out</a>
+        <nav class="nav-wraper #7986cb indigo lighten-2">
+            <div class="container">
+                <a href="/" class="brand-logo">Dev-to-Dev</a>
+                <ul class="right"> 
+                <li><a href="/topics">Topics</a></li>
+                <li><a href="/accounts/login ">Log In</a></li>
+                <li><a href="/accounts/signup">Sign Up</a></li>
+                <a href="{% url 'logout' %}">Log Out</a>
+                </ul>
+
+            </div>
         </nav>
     </header>
     <main>

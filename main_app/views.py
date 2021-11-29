@@ -5,6 +5,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from .forms import PostForm, CommentForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # TODO: Add User to comments
 # TODO: Add User to posts
@@ -16,15 +18,15 @@ class TopicIndex(ListView):
   model = Topic
   template_name = 'topics/index.html'
 
-class TopicUpdate(UpdateView):
+class TopicUpdate(LoginRequiredMixin, UpdateView):
   model = Topic
   template_name = 'topics/index.html'
 
-class TopicCreate(CreateView):
+class TopicCreate(LoginRequiredMixin, CreateView):
   model = Topic
   fields = ['title', 'subtitle']
 
-class TopicDelete(DeleteView):
+class TopicDelete(LoginRequiredMixin, DeleteView):
   model = Topic
   success_url = '/topics/'
 
@@ -36,21 +38,23 @@ def topics_detail(request, topic_id):
     'post_form': post_form,
   })
 
+@login_required
 def add_post(request, topic_id):
   form = PostForm(request.POST)
   print(form._errors)
   if form.is_valid():
     new_post = form.save(commit=False)
     new_post.topic_id = topic_id
+    new_post.user_id = request.user.id
     new_post.save()
   
   return redirect('detail', topic_id=topic_id)
 
-class PostUpdate(UpdateView):
+class PostUpdate(LoginRequiredMixin, UpdateView):
   model = Post
   fields = ['description']
 
-class PostDelete(DeleteView):
+class PostDelete(LoginRequiredMixin, DeleteView):
   model = Post
   success_url = '/topics/'
 
@@ -64,23 +68,24 @@ def posts_detail(request, topic_id, post_id):
     'topic_id': topic_id
   })
 
-
+@login_required
 def add_comment(request, topic_id, post_id):
   form = CommentForm(request.POST)
   print(form._errors)
   if form.is_valid():
     new_comment = form.save(commit=False)
     new_comment.post_id = post_id
+    new_comment.user_id = request.user.id
     new_comment.save()
   
   return redirect('posts_detail', topic_id=topic_id, post_id=post_id)
 
 
-class CommentUpdate(UpdateView):
+class CommentUpdate(LoginRequiredMixin, UpdateView):
   model = Comment
   fields = 'content'
 
-class CommentDelete(DeleteView):
+class CommentDelete(LoginRequiredMixin, DeleteView):
   model = Comment
   success_url = '/topics/'
 

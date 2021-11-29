@@ -2,3 +2,10 @@
     box-sizing: border-box;
     margin: 0;
 }
+
+div.row {
+    padding: 10px;
+    background: #ddd;
+    border: 1px solid #fff;
+    line-height: 60px;
+}

@@ -1,47 +1,26 @@
-{% comment %}
-
-
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>User Post</h1>
+
 <div class="row">
-    <div class="col s6">
-        <div class="card">
-            <div class="card-content">
-                <span class="card-title"> {{ post.title }}</span>
-                <p>Description: {{ post.description }}</p>
-                <p>Score: {{ post.score }}</p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card-action">
-    <a href="{% url 'posts_update' post.id %}">Edit</a>
-    <a href="{% url 'posts_delete' post.id %}">Delete</a>
-</div>
-
-{% endblock %}
-
-
-<!-- Please remove the endcomment blocks! -->
-
-{% endcomment %}
-
-<div>
+  <div class="col s8">
   {{ post.id }}
   {{ post.title }}
   {{ post.description }}
 </div>
-<div>
+</div>
+<div class="card">
   <form action="{% url 'comments_create' topic_id post.id %}" method="post">
     {% csrf_token %}
     {{ comment_form.as_p }}
-    <input type="submit" value="Add Post">
+    <input class="btn indigo" type="submit" value="Add Comment">
   </form>
   {% for comment in post.comment_set.all %}
-    <div>
+    <div class="card-content">
         {{ comment.content }}
     </div>
   {% endfor %}
 </div>
+
+{% endblock %}
+

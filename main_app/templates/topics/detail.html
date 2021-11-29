@@ -38,6 +38,7 @@
       <a href="{% url 'posts_detail' topic.id post.id %}">
         {{ post.title }}
       </a>
+      posted by: {{ post.user }}
     </div>
   {% endfor %}
 </div>

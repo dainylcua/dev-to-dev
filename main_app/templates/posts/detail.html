@@ -32,6 +32,7 @@
   {{ post.id }}
   {{ post.title }}
   {{ post.description }}
+  posted by: {{ post.user }}
 </div>
 <div>
   <form action="{% url 'comments_create' topic_id post.id %}" method="post">
@@ -42,6 +43,7 @@
   {% for comment in post.comment_set.all %}
     <div>
         {{ comment.content }}
+        commented by: {{ comment.user }}
     </div>
   {% endfor %}
 </div>

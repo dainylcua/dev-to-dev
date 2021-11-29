@@ -87,18 +87,18 @@ class CommentDelete(DeleteView):
 def signup(request):
   error_message = ''
   if request.method == 'POST':
-    # Handles new user creation
+    # This is how to create a 'user' form object
+    # that includes the data from the browser
     form = UserCreationForm(request.POST)
     if form.is_valid():
+      # This will add the user to the database
       user = form.save()
+      # This is how we log a user in via code
       login(request, user)
-      return redirect('home')
-      # Creates a session entry in the database and persists it sitewide until logging out
+      return redirect('index')
     else:
-      error_message = 'invalid data - please try again'
-
-  else:
-    # This is for GET requests, assuming our user clicked on "signup" from the navbar
-    form = UserCreationForm()
-    context = {'form': form, 'error_message': error_message}
-    return render(request, 'registration/signup.html', context)
+      error_message = 'Invalid sign up - try again'
+  # A bad POST or a GET request, so render signup.html with an empty form
+  form = UserCreationForm()
+  context = {'form': form, 'error_message': error_message}
+  return render(request, 'registration/signup.html', context)

@@ -3,9 +3,19 @@
     margin: 0;
 }
 
-div.row {
-    padding: 10px;
-    background: #ddd;
-    border: 1px solid #fff;
-    line-height: 60px;
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+}
+
+
+footer {
+    padding-top: 0;
+    text-align: center;
 }

@@ -5,18 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Dev-to-Dev</title>
 </head>
 <body>
     <header>
-        <nav>
-            <a href="/">Dev-to-Dev</a>
-            <a href="/topics">Topics</a>
-            <a href="/accounts/login ">Log In</a>
-            <a href="/accounts/signup">Sign Up</a>
+        <nav class="nav-wraper #7986cb indigo lighten-2">
+            <div class="container">
+                <a href="/" class="brand-logo">Dev-to-Dev</a>
+                <ul class="right"> 
+                <li><a href="/topics">Topics</a></li>
+                <li><a href="/accounts/login ">Log In</a></li>
+                <li><a href="/accounts/signup">Sign Up</a></li>
+                </ul>
+
+            </div>
         </nav>
     </header>
     <main>
@@ -24,7 +30,13 @@
         {% endblock %}
     </main>
 </body>
-<footer>
-    All Rights Reserved, &copy; 2021 Dev-to-Dev &nbsp;
+<footer class="page-footer grey darken-3">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 16">
+             All Rights Reserved, &copy; 2021 Dev-to-Dev &nbsp;
+            </div>
+        </div>
+    </div>
 </footer>
 </html>

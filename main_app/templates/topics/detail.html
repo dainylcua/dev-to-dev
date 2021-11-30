@@ -6,6 +6,8 @@
         {{ topic.title }}
         {{ topic.subtitle }}
         {{ topic.date }}
+        <a href="{% url 'topics_update' topic.id %}">Update Topic</a>
+        <a href="{% url 'topics_delete' topic.id %}">Delete Topic</a>
     </div>
     <div class="row">
         <div class="col s3">

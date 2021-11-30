@@ -11,6 +11,8 @@
   <div class="col s8 teal z-depth-2">
   {{ post.description }}
   posted by: {{ post.user }}
+  <a class="white" href="{% url 'posts_update' topic_id post.id %}">Update Post</a>
+  <a class="white" href="{% url 'posts_delete' topic_id post.id %}">Delete Post</a>
 </div>
 </div>
 <div class="card">
@@ -23,6 +25,8 @@
     <div class="card-content">
         {{ comment.content }}
         commented by: {{ comment.user }}
+        <a href="{% url 'comments_update' topic_id post.id comment.id %}">Update Comment</a>
+        <a href="{% url 'comments_delete' topic_id post.id comment.id %}">Delete Comment</a>
     </div>
   {% endfor %}
 </div>

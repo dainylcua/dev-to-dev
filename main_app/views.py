@@ -100,7 +100,7 @@ class CommentDelete(LoginRequiredMixin, DeleteView):
     return super().delete(*args, **kwargs)
 
   def get_success_url(self):
-    return reverse_lazy('post_detail', kwargs={'topic_id':self.object.post.topic.id, 'post_id': self.object.post.id})
+    return reverse_lazy('posts_detail', kwargs={'topic_id':self.object.post.topic.id, 'post_id': self.object.post.id})
 
 def signup(request):
   error_message = ''

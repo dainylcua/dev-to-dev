@@ -10,7 +10,7 @@
   </div>
   <div class="col s8 teal z-depth-2">
   {{ post.description }}
-  </div>
+  posted by: {{ post.user }}
 </div>
 </div>
 <div class="card">
@@ -22,6 +22,7 @@
   {% for comment in post.comment_set.all %}
     <div class="card-content">
         {{ comment.content }}
+        commented by: {{ comment.user }}
     </div>
   {% endfor %}
 </div>

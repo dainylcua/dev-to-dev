@@ -1,34 +1,14 @@
-{% comment %}
-
-
 {% extends 'base.html' %} 
 
 {% block content %}
 {% for topic in object_list %}
 <div class="card">
     <div class="topic">
-        <a href="{% url 'detail' post.id %}">
+        <a href="{% url 'detail' topic.id %}">
             <span class="card-title">{{ topic.title }}</span>
             <p>{{ topic.subtitle }}</p>
-            <p>{{ topic.date }}</p>
         </a>
     </div>
 </div>
 {% endfor %}
 {% endblock %}
-
-
-<!-- Please remove the endcomment blocks! -->
-
-{% endcomment %}
-
-
-
-{% for topic in object_list %}
-  <div>
-    <a href="{% url 'detail' topic.id %}">
-      {{ topic.title }}
-      {{ topic.subtitle }}
-    </a>
-  </div>
-{% endfor %}

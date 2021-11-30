@@ -23,6 +23,7 @@ class Post(models.Model):
     admin = models.BooleanField(default=False, editable=False)
     date = models.DateField('date_published', auto_now=True)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
       return f"{self.title} is under topic {self.topic}"
@@ -33,28 +34,8 @@ class Comment(models.Model):
     score = models.IntegerField(default=0, editable=False)
     date = models.DateField('date_published', auto_now=True)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=CASCADE)
 
     def __str__(self):
-        return f'{self.get_comment_display()} on {self.date}'
+        return f'{self.content} on {self.date}'
         
-
-    # class Meta:
-    #     ordering = ('-date',)
-        
-
-# class User(models.Model):
-#     id = models.ForeignKey(User, on_delete=models.CASCADE)
-#     email = models.CharField(max_length=50)
-#     username = models.TextField(max_length=250)
-#     password = models.CharField(max_length=50)
-#     is_admin = admin = models.BooleanField()
-
-#     def __str__(self):
-#         return self.id
-
-#     def get_absolute_url(self):
-#         return reverse('detail', kwargs={'pk': self.id})
-
-
-
-# Create your models here.

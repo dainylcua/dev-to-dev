@@ -21,7 +21,7 @@
     <form action="{% url 'posts_create' topic.id %}" method="post">
         {% csrf_token %}
         {{ post_form.as_p }}
-        <input type="submit" value="Add Post">
+        <input class="btn indigo" type="submit" value="Add Post">
     </form>
 </div>
 {% endblock %}

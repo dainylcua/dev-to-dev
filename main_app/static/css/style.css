@@ -19,3 +19,20 @@ footer {
     padding-top: 0;
     text-align: center;
 }
+
+.test {
+    background: url(/static/imgs/hands.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 1000px;
+}
+
+@media screen and (max-width: 670px){
+    header.test{
+        min-height: 500px;
+    }
+}
+
+h1 {
+    font-family: 'Lato', sans-serif;
+}

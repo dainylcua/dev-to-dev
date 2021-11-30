@@ -20,7 +20,7 @@ class TopicIndex(ListView):
 
 class TopicUpdate(LoginRequiredMixin, UpdateView):
   model = Topic
-  template_name = 'topics/index.html'
+  fields = ('title', 'subtitle',)
 
 class TopicCreate(LoginRequiredMixin, CreateView):
   model = Topic
@@ -52,7 +52,7 @@ def add_post(request, topic_id):
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
   model = Post
-  fields = ['description']
+  fields = ('description',)
 
 class PostDelete(LoginRequiredMixin, DeleteView):
   model = Post
@@ -83,7 +83,7 @@ def add_comment(request, topic_id, post_id):
 
 class CommentUpdate(LoginRequiredMixin, UpdateView):
   model = Comment
-  fields = 'content'
+  fields = ('content',)
 
 class CommentDelete(LoginRequiredMixin, DeleteView):
   model = Comment

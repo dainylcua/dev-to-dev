@@ -1,34 +1,20 @@
-{% comment %}
-
-
 {% extends 'base.html' %} 
 
 {% block content %}
-{% for topic in object_list %}
-<div class="card">
-    <div class="topic">
-        <a href="{% url 'detail' post.id %}">
-            <span class="card-title">{{ topic.title }}</span>
-            <p>{{ topic.subtitle }}</p>
-            <p>{{ topic.date }}</p>
-        </a>
+<div class="container">
+    <div class="row">
+        {% for topic in object_list %}
+            <div class="col s12 m6 l4">
+                <div class="card">
+                    <div class="card-content center-align">
+                        <a href="{% url 'detail' topic.id %}">
+                            <span class="card-title">{{ topic.title }}</span>
+                            <p>{{ topic.subtitle }}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 </div>
-{% endfor %}
 {% endblock %}
-
-
-<!-- Please remove the endcomment blocks! -->
-
-{% endcomment %}
-
-
-
-{% for topic in object_list %}
-  <div>
-    <a href="{% url 'detail' topic.id %}">
-      {{ topic.title }}
-      {{ topic.subtitle }}
-    </a>
-  </div>
-{% endfor %}

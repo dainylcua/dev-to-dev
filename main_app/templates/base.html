@@ -9,16 +9,32 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/6fc5c678f7.js" crossorigin="anonymous"></script>
+
     <title>Dev-to-Dev</title>
 </head>
 <body>
     <header>
-        <nav>
-            <a href="/">Dev-to-Dev</a>
-            <a href="/topics">Topics</a>
-            <a href="/accounts/login ">Log In</a>
-            <a href="/accounts/signup">Sign Up</a>
-            <a href="{% url 'logout' %}">Log Out</a>
+        <nav class="nav-wraper #37474f blue-grey darken-3">
+            <div class="container">
+                <a href="/" class="brand-logo">Dev-to-Dev</a>
+                <a href="" class="sidenav-trigger" data-target="mobile-menu">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down"> 
+                <li><a href="/topics">Topics</a></li>
+                <li><a href="/accounts/login ">Log In</a></li>
+                <li><a href="/accounts/signup">Sign Up</a></li>
+                <a href="{% url 'logout' %}">Log Out</a>
+                </ul>
+                <ul class="sidenav grey lighten-2" id="mobile-menu">
+                <li><a href="/topics">Topics</a></li>
+                <li><a href="/accounts/login ">Log In</a></li>
+                <li><a href="/accounts/signup">Sign Up</a></li>
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                </ul>
+
+            </div>
         </nav>
     </header>
     <main>
@@ -35,4 +51,13 @@
         </div>
     </div>
 </footer>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function(){
+
+      $('.sidenav').sidenav();
+
+    });
+  </script>
 </html>

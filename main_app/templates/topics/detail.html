@@ -1,27 +1,32 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<div class="topic_detail">
-    {{ topic.id }}
-    {{ topic.title }}
-    {{ topic.subtitle }}
-    {{ topic.date }}
-</div>
-<div>
-    <h2>All Post</h2>
-    {% for post in topic.post_set.all %}
-    <div>
-        <a href="{% url 'posts_detail' topic.id post.id %}">
-            {{ post.title }}
-        </a>
-        posted by: {{ post.user }}
+<div class="container">
+    <div class="topic_detail">
+        {{ topic.title }}
+        {{ topic.subtitle }}
+        {{ topic.date }}
     </div>
-    {% endfor %}
-    <h2>Add A Post</h2>
-    <form action="{% url 'posts_create' topic.id %}" method="post">
-        {% csrf_token %}
-        {{ post_form.as_p }}
-        <input type="submit" value="Add Post">
-    </form>
+    <div class="row">
+        <div class="col s3">
+            <!-- <h3>Add A Post</h3> -->
+            <form action="{% url 'posts_create' topic.id %}" method="post">
+                {% csrf_token %}
+                {{ post_form.as_p }}
+                <input type="submit" value="Add Post">
+            </form>
+        </div>
+        <div class="col s9">
+            <h3>All Posts</h3>
+            {% for post in topic.post_set.all %}
+                <div>
+                    <a href="{% url 'posts_detail' topic.id post.id %}">
+                        {{ post.title }}
+                    </a>
+                    posted by: {{ post.user }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

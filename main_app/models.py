@@ -28,6 +28,9 @@ class Post(models.Model):
     def __str__(self):
       return f"{self.title} is under topic {self.topic}"
 
+    def get_absolute_url(self):
+        return reverse('posts_detail', kwargs={'topic_id':self.topic.id, 'post_id':self.id})
+
 class Comment(models.Model):
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(max_length=250)
@@ -38,4 +41,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'{self.content} on {self.date}'
+
+    def get_absolute_url(self):
+        return reverse('posts_detail', kwargs={'topic_id':self.post.topic.id, 'post_id':self.post.id})
         

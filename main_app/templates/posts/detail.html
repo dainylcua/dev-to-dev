@@ -3,10 +3,16 @@
 {% block content %}
 <div class="container">
 	<div class="row">
-		<div class="topic_detail center-align">
-			<h3>{{ post.title }}</h3>
+		<div class="topic_detail">
+			<h3 class="center-align">{{ post.title }}</h3>
 			<p class="left-align">posted by: {{ post.user }}</p>
 			<p class="left-align">{{ post.description }}</p>
+			{% if user.id == post.user.id %}
+				<div class="right-align">
+					<a class="btn-small" href="{% url 'posts_update' topic_id post.id %}">Update Post</a>
+					<a class="btn-small red darken-2" href="{% url 'posts_delete' topic_id post.id %}">Delete Post</a>
+				</div>
+			{% endif %}
 		</div>
 		<div class="card">
 			<form action="{% url 'comments_create' topic_id post.id %}" method="post">
@@ -18,9 +24,15 @@
 		{% for comment in post.comment_set.all %}
 			<div class="card">
 				<div class="card-content">
-					<p class="text-bold">{{ comment.user }}</p>
+					<p>{{ comment.user }}</p>
 					<p class="left-align">{{ comment.content }}</p>
 				</div>
+				{% if user.id == comment.user.id %}
+					<div class="right-align">
+						<a class="btn-small" href="{% url 'comments_update' topic_id post.id comment.id %}">Update Comment</a>
+						<a class="btn-small red darken-2" href="{% url 'comments_delete' topic_id post.id comment.id %}">Delete Comment</a>
+					</div>
+				{% endif %}
 			</div>
 		{% endfor %}
 	</div>

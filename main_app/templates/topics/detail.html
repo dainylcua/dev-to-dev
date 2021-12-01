@@ -18,15 +18,17 @@
             </div>
         </div>
         <div class="col s12">
-            <h3>All Posts</h3>
-            {% for post in topic.post_set.all %}
-                <div>
-                    <a href="{% url 'posts_detail' topic.id post.id %}">
-                        {{ post.title }}
-                    </a>
-                    posted by: {{ post.user }}
-                </div>
-            {% endfor %}
+            <div class="card">
+                <h3 class="center-align">All Posts</h3>
+                {% for post in topic.post_set.all %}
+                    <div>
+                        <a href="{% url 'posts_detail' topic.id post.id %}">
+                            {{ post.title }}
+                        </a>
+                        posted by: {{ post.user }}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

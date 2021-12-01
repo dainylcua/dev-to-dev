@@ -9,9 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
-# TODO: Add User to comments
-# TODO: Add User to posts
-# Create your views here.
 def home(request):
   return render(request, 'home.html')
 
@@ -20,7 +17,7 @@ class TopicIndex(ListView):
   template_name = 'topics/index.html'
 
 class TopicUpdate(LoginRequiredMixin, UpdateView):
-  # Superuser required feature from django-braces
+  # Superuser required feature from django-braces - can possibly make middleware function?
   def dispatch(self, request, *args, **kwargs):
     if not request.user.is_superuser:
       return redirect('/topics/')
@@ -68,12 +65,27 @@ def add_post(request, topic_id):
   return redirect('detail', topic_id=topic_id)
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
+  # Same user or superuser or redirects
+  def dispatch(self, request, *args, **kwargs):
+    if request.user:
+      self.object = self.get_object()
+      if (self.object.user == request.user) or (request.user.is_superuser):
+        return super().dispatch(request, *args, **kwargs)
+    return redirect('/topics/')
+
   model = Post
   fields = ('description',)
 
 class PostDelete(LoginRequiredMixin, DeleteView):
-  model = Post
+  # Same user or redirects
+  def dispatch(self, request, *args, **kwargs):
+    if request.user:
+      self.object = self.get_object()
+      if (self.object.user == request.user)  or (request.user.is_superuser):
+        return super().dispatch(request, *args, **kwargs)
+    return redirect('/topics/')
 
+  model = Post
   def delete(self, *args, **kwargs):
     self.object = self.get_object()
     return super().delete(*args, **kwargs)
@@ -105,10 +117,24 @@ def add_comment(request, topic_id, post_id):
 
 
 class CommentUpdate(LoginRequiredMixin, UpdateView):
+  # Same user or superuser or redirects
+  def dispatch(self, request, *args, **kwargs):
+    if request.user:
+      self.object = self.get_object()
+      if (self.object.user == request.user)  or (request.user.is_superuser):
+        return super().dispatch(request, *args, **kwargs)
+    return redirect('/topics/')
   model = Comment
   fields = ('content',)
 
 class CommentDelete(LoginRequiredMixin, DeleteView):
+  # Same user or superuser or redirects
+  def dispatch(self, request, *args, **kwargs):
+    if request.user:
+      self.object = self.get_object()
+      if (self.object.user == request.user) or (request.user.is_superuser):
+        return super().dispatch(request, *args, **kwargs)
+    return redirect('/topics/')
   model = Comment
   
   def delete(self, *args, **kwargs):

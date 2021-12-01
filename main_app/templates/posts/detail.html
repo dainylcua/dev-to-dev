@@ -7,6 +7,10 @@
 			<h3>{{ post.title }}</h3>
 			<p class="left-align">posted by: {{ post.user }}</p>
 			<p class="left-align">{{ post.description }}</p>
+      {% if user.id == post.user.id %}
+      <a class="white" href="{% url 'posts_update' topic_id post.id %}">Update Post</a>
+      <a class="white" href="{% url 'posts_delete' topic_id post.id %}">Delete Post</a>
+      {% endif %}
 		</div>
 		<div class="card">
 			<form action="{% url 'comments_create' topic_id post.id %}" method="post">
@@ -20,6 +24,10 @@
 				<div class="card-content">
 					<p class="text-bold">{{ comment.user }}</p>
 					<p class="left-align">{{ comment.content }}</p>
+          {% if user.id == comment.user.id %}
+          <a href="{% url 'comments_update' topic_id post.id comment.id %}">Update Comment</a>
+          <a href="{% url 'comments_delete' topic_id post.id comment.id %}">Delete Comment</a>
+          {% endif %}
 				</div>
 			</div>
 		{% endfor %}

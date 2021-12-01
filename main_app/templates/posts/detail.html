@@ -26,6 +26,10 @@
 				<div class="card-content">
 					<p>{{ comment.user }}</p>
 					<p class="left-align">{{ comment.content }}</p>
+          {% if user.id == comment.user.id %}
+          <a href="{% url 'comments_update' topic_id post.id comment.id %}">Update Comment</a>
+          <a href="{% url 'comments_delete' topic_id post.id comment.id %}">Delete Comment</a>
+          {% endif %}
 				</div>
 				{% if user.id == comment.user.id %}
 					<div class="right-align">

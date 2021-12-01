@@ -27,6 +27,13 @@ footer {
     min-height: 1000px;
 }
 
+.texture {
+    background: url(/static/imgs/texture.jpg);
+    background-size: cover;
+    background-position: center;
+    min-height: 1000px;
+}
+
 @media screen and (max-width: 670px){
     header.test, div.logo {
         min-height: 500px;
@@ -42,7 +49,8 @@ footer {
     border-radius: 50px;
 }
 
-h1 {
+
+h1, .brand-logo, .login {
     font-family: 'Lato', sans-serif;
 }
 
@@ -51,11 +59,16 @@ h1 {
 }
 
 form {
-    padding-left: 10px;  
+    padding: 10px; 
 }
 
 .login {
     font-size: 27px;
     margin: auto;
-    margin-top: 300px;
+    margin-top: 378px;
+    margin-left: -120px;
+}
+
+.flow-text {
+    font-size: 33px;
 }

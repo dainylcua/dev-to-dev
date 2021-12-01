@@ -28,9 +28,18 @@ footer {
 }
 
 @media screen and (max-width: 670px){
-    header.test{
+    header.test, div.logo {
         min-height: 500px;
     }
+}
+
+.logo {
+    background-image: url(/static/imgs/logo_transparent.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    border-radius: 50px;
 }
 
 h1 {
@@ -45,6 +54,8 @@ form {
     padding-left: 10px;  
 }
 
-div.login {
-    font-size: 17px;
+.login {
+    font-size: 27px;
+    margin: auto;
+    margin-top: 300px;
 }

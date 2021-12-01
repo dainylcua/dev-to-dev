@@ -7,6 +7,7 @@ from django.contrib.auth import login
 from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 # TODO: Add User to comments
 # TODO: Add User to posts
@@ -20,7 +21,7 @@ class TopicIndex(ListView):
 
 class TopicUpdate(LoginRequiredMixin, UpdateView):
   model = Topic
-  template_name = 'topics/index.html'
+  fields = ('title', 'subtitle',)
 
 class TopicCreate(LoginRequiredMixin, CreateView):
   model = Topic
@@ -52,11 +53,17 @@ def add_post(request, topic_id):
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
   model = Post
-  fields = ['description']
+  fields = ('description',)
 
 class PostDelete(LoginRequiredMixin, DeleteView):
   model = Post
-  success_url = '/topics/'
+
+  def delete(self, *args, **kwargs):
+    self.object = self.get_object()
+    return super().delete(*args, **kwargs)
+
+  def get_success_url(self):
+    return reverse_lazy('detail', kwargs={'topic_id':self.object.topic.id})
 
 def posts_detail(request, topic_id, post_id):
   post = Post.objects.get(id=post_id)
@@ -83,11 +90,17 @@ def add_comment(request, topic_id, post_id):
 
 class CommentUpdate(LoginRequiredMixin, UpdateView):
   model = Comment
-  fields = 'content'
+  fields = ('content',)
 
 class CommentDelete(LoginRequiredMixin, DeleteView):
   model = Comment
-  success_url = '/topics/'
+  
+  def delete(self, *args, **kwargs):
+    self.object = self.get_object()
+    return super().delete(*args, **kwargs)
+
+  def get_success_url(self):
+    return reverse_lazy('posts_detail', kwargs={'topic_id':self.object.post.topic.id, 'post_id': self.object.post.id})
 
 def signup(request):
   error_message = ''

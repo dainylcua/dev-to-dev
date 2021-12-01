@@ -25,7 +25,7 @@
                 <li><a href="/topics">Topics</a></li>
                 <li><a href="/accounts/login ">Log In</a></li>
                 <li><a href="/accounts/signup">Sign Up</a></li>
-                <a href="{% url 'logout' %}">Log Out</a>
+                <li><a href="{% url 'logout' %}">Log Out</a></li>
                 </ul>
                 <ul class="sidenav grey lighten-2" id="mobile-menu">
                 <li><a href="/topics">Topics</a></li>
@@ -37,7 +37,7 @@
             </div>
         </nav>
     </header>
-    <main>
+    <main class="texture">
         {% block content %} 
         {% endblock %}
     </main>

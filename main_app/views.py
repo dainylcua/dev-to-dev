@@ -20,14 +20,30 @@ class TopicIndex(ListView):
   template_name = 'topics/index.html'
 
 class TopicUpdate(LoginRequiredMixin, UpdateView):
+  # Superuser required feature from django-braces
+  def dispatch(self, request, *args, **kwargs):
+    if not request.user.is_superuser:
+      return redirect('/topics/')
+    return super().dispatch(request, *args, **kwargs)
+  
   model = Topic
   fields = ('title', 'subtitle',)
 
 class TopicCreate(LoginRequiredMixin, CreateView):
+  def dispatch(self, request, *args, **kwargs):
+    if not request.user.is_superuser:
+      return redirect('/topics/')
+    return super().dispatch(request, *args, **kwargs)
+
   model = Topic
   fields = ['title', 'subtitle']
 
 class TopicDelete(LoginRequiredMixin, DeleteView):
+  def dispatch(self, request, *args, **kwargs):
+    if not request.user.is_superuser:
+      return redirect('/topics/')
+    return super().dispatch(request, *args, **kwargs)
+
   model = Topic
   success_url = '/topics/'
 

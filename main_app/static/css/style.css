@@ -58,6 +58,13 @@ h1, .brand-logo, .login {
     padding-left: 10px;
 }
 
+span.badge {
+    position: relative;
+    top: 20px;
+    right: 20px;
+
+}
+
 form {
     padding: 10px; 
 }

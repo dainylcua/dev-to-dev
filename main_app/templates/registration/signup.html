@@ -4,15 +4,17 @@
 <div class="container">
     <div class="row">
         <div class="col s8 offset-s2">
-            <h1 class="center-align">Signup</h1>
-            {% if error_message %}
-                <p class="red-text">{{ error_message }}</p>
-            {% endif %}
-            <form action="{% url 'signup' %}" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" class="btn blue" value="Signup">
-            </form>
+            <div class="card">
+                <h1 class="center-align">Signup</h1>
+                {% if error_message %}
+                    <p class="red-text center-align">{{ error_message }}</p>
+                {% endif %}
+                <form action="{% url 'signup' %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" class="btn blue" value="Signup">
+                </form>
+            </div>
         </div>
     </div>
 </div>

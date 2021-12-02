@@ -1,7 +1,6 @@
 from django.urls import path 
 from . import views 
 
-# TODO: Bugtest Update/Delete routes for every model (Topic, Post, Comment)
 urlpatterns = [
     path('', views.home, name='home'),
     path('topics/create/', views.TopicCreate.as_view(), name='topics_create'),

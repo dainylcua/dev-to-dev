@@ -19,7 +19,6 @@ class TopicIndex(ListView):
   template_name = 'topics/index.html'
 
 class TopicUpdate(LoginRequiredMixin, UpdateView):
-  # Superuser required feature from django-braces - can possibly make middleware function?
   def dispatch(self, request, *args, **kwargs):
     if not request.user.is_superuser:
       return redirect('/topics/')
@@ -67,7 +66,6 @@ def add_post(request, topic_id):
   return redirect('detail', topic_id=topic_id)
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
-  # Same user or superuser or redirects
   def dispatch(self, request, *args, **kwargs):
     if request.user:
       self.object = self.get_object()
@@ -79,7 +77,6 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
   fields = ('description',)
 
 class PostDelete(LoginRequiredMixin, DeleteView):
-  # Same user or redirects
   def dispatch(self, request, *args, **kwargs):
     if request.user:
       self.object = self.get_object()
@@ -119,7 +116,6 @@ def add_comment(request, topic_id, post_id):
 
 
 class CommentUpdate(LoginRequiredMixin, UpdateView):
-  # Same user or superuser or redirects
   def dispatch(self, request, *args, **kwargs):
     if request.user:
       self.object = self.get_object()
@@ -130,7 +126,6 @@ class CommentUpdate(LoginRequiredMixin, UpdateView):
   fields = ('content',)
 
 class CommentDelete(LoginRequiredMixin, DeleteView):
-  # Same user or superuser or redirects
   def dispatch(self, request, *args, **kwargs):
     if request.user:
       self.object = self.get_object()
@@ -149,18 +144,13 @@ class CommentDelete(LoginRequiredMixin, DeleteView):
 def signup(request):
   error_message = ''
   if request.method == 'POST':
-    # This is how to create a 'user' form object
-    # that includes the data from the browser
     form = UserCreationForm(request.POST)
     if form.is_valid():
-      # This will add the user to the database
       user = form.save()
-      # This is how we log a user in via code
       login(request, user)
       return redirect('index')
     else:
       error_message = 'Invalid sign up - try again'
-  # A bad POST or a GET request, so render signup.html with an empty form
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)

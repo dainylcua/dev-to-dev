@@ -16,7 +16,6 @@ class Topic(models.Model):
       return f"{self.title} is topic number {self.id}"
 
 class Post(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     description = models.TextField(max_length=250)
     score = models.IntegerField(default=0, editable=False)
@@ -32,7 +31,6 @@ class Post(models.Model):
         return reverse('posts_detail', kwargs={'topic_id':self.topic.id, 'post_id':self.id})
 
 class Comment(models.Model):
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(max_length=250)
     score = models.IntegerField(default=0, editable=False)
     date = models.DateField('date_published', auto_now=True)

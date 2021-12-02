@@ -10,6 +10,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 def home(request):
+  if request.user.is_authenticated:
+    return redirect('/topics')
   return render(request, 'home.html')
 
 class TopicIndex(ListView):

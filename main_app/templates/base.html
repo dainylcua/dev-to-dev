@@ -22,24 +22,28 @@
                     <i class="material-icons">menu</i>
                 </a>
                 <ul class="right hide-on-med-and-down"> 
-                <li><a href="/topics">Topics</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="/" class="btn-floating blue-grey darken-4 z-depth-0">
-                  <i class="material-icons">notifications</i>
-                </a></li>
-                <li><span class="badge white-text pink new">6</span></li>
-                <li>{{ user.username }}</li>
-                <li><a href="{% url 'logout' %}">Log Out</a></li>
-                {% else %}
-                <li><a href="/accounts/login ">Log In</a></li>
-                <li><a href="/accounts/signup">Sign Up</a></li>
+                  <li><a href="/topics">Topics</a></li>
+                  {% if user.is_authenticated %}
+                  <li><a href="/" class="btn-floating blue-grey darken-4 z-depth-0">
+                    <i class="material-icons">notifications</i>
+                  </a></li>
+                  <li><span class="badge white-text pink new">6</span></li>
+                  <li><a href="">{{ user.username }}</a></li>
+                  <li><a href="{% url 'logout' %}">Log Out</a></li>
+                  {% else %}
+                  <li><a href="/accounts/login ">Log In</a></li>
+                  <li><a href="/accounts/signup">Sign Up</a></li>
+                  {% endif %}
                 </ul>
-                {% endif %}
                 <ul class="sidenav grey lighten-2" id="mobile-menu">
-                <li><a href="/topics">Topics</a></li>
-                <li><a href="/accounts/login ">Log In</a></li>
-                <li><a href="/accounts/signup">Sign Up</a></li>
-                <li><a href="{% url 'logout' %}">Log Out</a></li>
+                  <li><a href="/topics">Topics</a></li>
+                  {% if user.is_authenticated %}
+                  <li><a href="">{{ user.username }}</a></li>
+                  <li><a href="{% url 'logout' %}">Log Out</a></li>
+                  {% else %}
+                  <li><a href="/accounts/login ">Log In</a></li>
+                  <li><a href="/accounts/signup">Sign Up</a></li>
+                  {% endif %}
                 </ul>
             </div>
         </nav>

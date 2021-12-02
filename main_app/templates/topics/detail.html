@@ -2,14 +2,15 @@
 
 {% block content %}
 <div class="container">
-    <div class="topic_detail center-align">
-        <h3>{{ topic.title }}</h3>
-        <h6>{{ topic.subtitle }}</h6>
-        <p>{{ topic.date }}</p>
-    </div>
     <div class="row">
         <div class="col s12">
             <div class="card">
+                <div class="topic_detail center-align">
+                    <h3>{{ topic.title }}</h3>
+                    <h6>{{ topic.subtitle }}</h6>
+                    <p>{{ topic.date }}</p>
+                </div>
+                <div class="divider"></div>
                 <form action="{% url 'posts_create' topic.id %}" method="post">
                     {% csrf_token %}
                     {{ post_form.as_p }}
@@ -17,6 +18,7 @@
                 </form>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="col s12">
             <div class="card">
                 <h3 class="center-align">All Posts</h3>
@@ -24,11 +26,21 @@
                     <div class="center-align">
                         <a href="{% url 'posts_detail' topic.id post.id %}">
                             {{ post.title }}
+=======
+        <h3 class="center-align">All Posts</h3>
+            {% for post in topic.post_set.all %}
+                <div class="col s12 m6 l4">
+                    <a href="{% url 'posts_detail' topic.id post.id %}">
+                        <div class="card hoverable">
+                            <div class="card-content center-align">
+                                <span class="card-title">{{ post.title }}</span>
+                                <p>posted by: {{ post.user }}</p>
+                            </div>
+>>>>>>> 244e94207efc9ce2ea0a7064399a29f717720d9f
                         </a>
-                        posted by: {{ post.user }}
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
 </div>

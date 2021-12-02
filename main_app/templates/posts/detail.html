@@ -3,18 +3,19 @@
 {% block content %}
 <div class="container">
 	<div class="row">
-		<div class="topic_detail">
-			<h3 class="center-align">{{ post.title }}</h3>
-			<p class="left-align">posted by: {{ post.user }}</p>
-			<p class="left-align">{{ post.description }}</p>
-			{% if user.id == post.user.id %}
-				<div class="right-align">
-					<a class="btn-small" href="{% url 'posts_update' topic_id post.id %}">Update Post</a>
-					<a class="btn-small red darken-2" href="{% url 'posts_delete' topic_id post.id %}">Delete Post</a>
-				</div>
-			{% endif %}
-		</div>
 		<div class="card">
+			<div class="topic_detail center-align">
+				<h3>{{ post.title }}</h3>
+				<p>posted by: {{ post.user }}</p>
+				<p>{{ post.description }}</p>
+				{% if user.id == post.user.id %}
+					<div class="right-align">
+						<a class="btn-small" href="{% url 'posts_update' topic_id post.id %}">Update Post</a>
+						<a class="btn-small red darken-2" href="{% url 'posts_delete' topic_id post.id %}">Delete Post</a>
+					</div>
+				{% endif %}
+			</div>
+			<div class="divider"></div>
 			<form action="{% url 'comments_create' topic_id post.id %}" method="post">
 				{% csrf_token %}
 				{{ comment_form.as_p }}

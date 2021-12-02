@@ -1,12 +1,10 @@
 # Dev-to-Dev
 
-Dev-to-Dev allows users, specifically bootcamp students, to browse software development topics of interests and have discussions with other developers from all over the world.
+Dev-to-Dev allows users, specifically bootcamp students, to browse software development topics of interests and have discussions with other bootcamp students or developers from all over the world. Users do not need to log in to view discussions, but must log in to contribute to them.
 
-# Getting Started
+*Developed by Dainyl Cua, Fredd Oropeza, Alexis Pareja, and Brandon Swansfeger*
 
-Sign up and log in. The landing page is your portal log in, sign up, or continue as a guest. Once entered you can post and collaborate on the chosen topics of the week. 
-
-# Technologies Used
+## Technologies Used
 
 - HTML, CSS, JavaScript
 - Materialize CSS
@@ -16,7 +14,12 @@ Sign up and log in. The landing page is your portal log in, sign up, or continue
 - PostgreSql
 - Heroku
 
-# Screenshots
+## Getting Started
+
+Sign up, log in, or continue as a guest from the landing page. As a guest, you can view discussions on any topics that have been posted. As a user, you can directly contribute to the discussion by creating or replying to a post.
+
+
+## Screenshots
 ![screenshot 1](.png)
 ![screenshot 2](.png)
 ![screenshot 3](.png)
@@ -25,9 +28,11 @@ Sign up and log in. The landing page is your portal log in, sign up, or continue
 
 https://.herokuapp.com/
 
-# Future Enhancements
+## Future Enhancements
 
-- The ability to see a user's profile. 
-- Uploading images to posts and comments.
-- Reply Functionality
-- 
+- User profiles 
+- Image upload to posts and comments
+- Reply functionality
+- Topic or reply notifications
+- Timed topic posts
+- Topic suggestions

@@ -21,7 +21,7 @@ Dev-to-Dev allows users, specifically bootcamp students, to browse software deve
 
 Sign up, log in, or continue as a guest from the landing page. As a guest, you can view discussions on any topics that have been posted. As a user, you can directly contribute to the discussion by creating or replying to a post.
 
-If you want to clone the repository, use the `master` branch for your local repository, and use the `develop-test` branchas a reference for deploying django apps to heroku.
+If you want to clone the repository, use the `master` branch for your local repository, and use the `develop-test` branch a reference for deploying django apps to heroku.
 
 ## Screenshots
 

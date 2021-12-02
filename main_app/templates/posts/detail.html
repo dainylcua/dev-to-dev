@@ -25,7 +25,7 @@
 		{% for comment in post.comment_set.all %}
 			<div class="card">
 				<div class="card-content">
-					<p>{{ comment.user }}</p>
+					<blockquote><h5>{{ comment.user }}</h5></blockquote>
 					<p class="left-align">{{ comment.content }}</p>
 				</div>
 				{% if user.id == comment.user.id %}

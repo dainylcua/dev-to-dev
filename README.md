@@ -1,6 +1,6 @@
-# Dev-to-Dev App 
+# Dev-to-Dev
 
-Allows user to browse software development topics of interests and have discussions with other developers from all over.
+Dev-to-Dev allows users, specifically bootcamp students, to browse software development topics of interests and have discussions with other developers from all over the world.
 
 # Getting Started
 
@@ -8,12 +8,13 @@ Sign up and log in. The landing page is your portal log in, sign up, or continue
 
 # Technologies Used
 
-- HTML, CSS, JavaScript/jQuery
-- Django
-- MongoDB
-- Heroku
+- HTML, CSS, JavaScript
+- Materialize CSS
+- JQuery
 - Python
-- Materialize
+- Django
+- PostgreSql
+- Heroku
 
 # Screenshots
 ![screenshot 1](.png)
@@ -26,7 +27,7 @@ https://.herokuapp.com/
 
 # Future Enhancements
 
--  The ability to see a user's profile. 
+- The ability to see a user's profile. 
 - Uploading images to posts and comments.
-- 
+- Reply Functionality
 - 

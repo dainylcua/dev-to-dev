@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col s12">
+        <div class="card">
             <div class="card">
                 <div class="topic_detail center-align">
                     <h3>{{ topic.title }}</h3>
@@ -18,15 +18,6 @@
                 </form>
             </div>
         </div>
-<<<<<<< HEAD
-        <div class="col s12">
-            <div class="card">
-                <h3 class="center-align">All Posts</h3>
-                {% for post in topic.post_set.all %}
-                    <div class="center-align">
-                        <a href="{% url 'posts_detail' topic.id post.id %}">
-                            {{ post.title }}
-=======
         <h3 class="center-align">All Posts</h3>
             {% for post in topic.post_set.all %}
                 <div class="col s12 m6 l4">
@@ -36,7 +27,6 @@
                                 <span class="card-title">{{ post.title }}</span>
                                 <p>posted by: {{ post.user }}</p>
                             </div>
->>>>>>> 244e94207efc9ce2ea0a7064399a29f717720d9f
                         </a>
                     </div>
                 </div>

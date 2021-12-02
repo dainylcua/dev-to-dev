@@ -21,7 +21,7 @@
             <div class="card">
                 <h3 class="center-align">All Posts</h3>
                 {% for post in topic.post_set.all %}
-                    <div>
+                    <div class="center-align">
                         <a href="{% url 'posts_detail' topic.id post.id %}">
                             {{ post.title }}
                         </a>

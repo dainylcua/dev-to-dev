@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-r6l=73g8#yswsyarhp78wl*t34#rh)-8rvhke)hp*)!vd$4un&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dc-dev-to-dev-test.herokuapp.com']
 
 
 # Application definition
@@ -78,10 +78,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dev_to_dev',
-        'USER': 'admin',
-        'PASSWORD': 'abc1234',
-        'HOST': 'localhost',
-        'PORT': '',
+        # 'USER': 'admin',
+        # 'PASSWORD': 'abc1234',
+        # 'HOST': 'localhost',
+        # 'PORT': '',
     }
 }
 
